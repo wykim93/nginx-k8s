@@ -20,11 +20,11 @@ spec:
         ports:
         - containerPort: 80
         volumeMounts:
-        - name: html-volume
-          mountPath: /usr/share/nginx/html  # Nginx 기본 HTML 페이지 위치
+        - name: nginx-html
+          mountPath: /usr/share/nginx/html/index.html
+          subPath: index.html
       volumes:
-      - name: html-volume
-        hostPath:
-          path: /home/ec2-user/workshop/git/nginx/index.html  # 실제 로컬 파일 경로
-          type: File  # hostPath에서 파일로만 마운트
+      - name: nginx-html
+        configMap:
+          name: nginx-index
 

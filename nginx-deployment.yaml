@@ -21,9 +21,10 @@ spec:
         - containerPort: 80
         volumeMounts:
         - name: html-volume
-          mountPath: /usr/share/nginx/html  # nginx에서 기본 HTML 페이지가 위치한 경로
+          mountPath: /usr/share/nginx/html  # Nginx 기본 HTML 페이지 위치
       volumes:
       - name: html-volume
-        configMap:
-          name: nginx-html-config  # ConfigMap을 volume으로 사용
+        hostPath:
+          path: /home/ec2-user/workshop/git/nginx/index.html  # 실제 로컬 파일 경로
+          type: File  # hostPath에서 파일로만 마운트
 

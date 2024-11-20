@@ -20,11 +20,10 @@ spec:
         ports:
         - containerPort: 80
         volumeMounts:
-        - name: nginx-html
-          mountPath: /usr/share/nginx/html/index.html
-          subPath: index.html
+        - name: html-volume
+          mountPath: /usr/share/nginx/html  # nginx에서 기본 HTML 페이지가 위치한 경로
       volumes:
-      - name: nginx-html
+      - name: html-volume
         configMap:
-          name: nginx-index
+          name: nginx-html-config  # ConfigMap을 volume으로 사용
 
